@@ -1,0 +1,22 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("nhanes20152016.csv")
+
+# Escolha das variáveis
+var_nom = "Sexo"
+var_ord = "Escolaridade"
+
+# Tabela de contingência
+tabela = pd.crosstab(df[var_nom], df[var_ord])
+print(tabela)
+
+# Gráfico de barras empilhadas
+tabela.plot(kind="bar", stacked=True)
+plt.xlabel("Sexo")
+plt.ylabel("Frequência")
+plt.title("Tabela de contingência: Sexo x Escolaridade")
+plt.legend(title="Escolaridade")
+plt.tight_layout()
+plt.show()
